@@ -68,7 +68,7 @@ def cannize_image(img):
 
 def main():
 	st.title("Face Detection App")
-	st.text("Built with Streamlit and OpenCV")
+	st.text("Built with OpenCV and Streamlit")
 
 	activities = ['Detection','About']
 	choice = st.sidebar.selectbox("Select Activity",activities)
@@ -124,27 +124,39 @@ def main():
 			else:
 				st.image(our_img, width = 800)
 
+		elif img_task == 'Find Features in Image':
+			task = ['Faces','Eyes','Cannize','Cartonize']
+			feature_choice = st.sidebar.selectbox("Find Features",task)
+			if st.button("Process"):
+
+				if feature_choice == 'Faces':
+					result_img,result_faces = detect_faces(our_img)
+					st.subheader('Processed Image')
+					st.image(result_img,width = 800)
+					st.success('Found {} faces'.format(len(result_faces)))
 
 
+				elif feature_choice == 'Eyes':
+					result_img = detect_eyes(our_img)
+					st.subheader('Processed Image')
+					st.image(result_img, width = 800)
+
+				elif feature_choice == 'Cartonize':
+					result_img = cartonize_image(our_img)
+					st.subheader('Processed Image')
+					st.image(result_img, width = 800)
+
+				elif feature_choice == 'Cannize':
+					result_img = cannize_image(our_img)
+					st.subheader('Processed Image')
+					st.image(result_img, width = 800)
 
 
 	elif choice =='About':
 		st.subheader("About Face Detection App")
-		st.markdown("Built with Streamlit and OpenCV by [Rehan uddin](https://hardly-human.github.io/)")
+		st.markdown("Built with OpenCV and Streamlit by [Rehan uddin](https://hardly-human.github.io/)")
 		st.success("Rehan uddin (Hardly-Human)👋😉")
 		
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
