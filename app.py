@@ -7,11 +7,63 @@ import os
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('cascades/haarcascade_eye.xml')
 
-@st.cache
+# loads image
+@st.cache  # caches the data for efficiency..
 def load_image(image):
 	img = Image.open(image)
 	return img
 
+# detects faces and draws rectangles around them..
+@st.cache
+def detect_faces(img):
+	new_img = np.array(img.convert('RGB'))
+	img = cv2.cvtColor(new_img,1)
+	gray = cv2.cvtColor(new_img,cv2.COLOR_BGR2GRAY) 
+	# Detect Face
+	faces = face_cascade.detectMultiScale(gray,1.3,4)
+	# Draw Rectangle
+	for (x,y,w,h) in faces:
+		cv2.rectangle(img, (x,y),(x+w,y+h),(255,0,0),2)
+
+	return img,faces
+
+# detects eyes and draws rectangles around them..
+@st.cache
+def detect_eyes(img):
+	new_img = np.array(img.convert('RGB'))
+	img = cv2.cvtColor(new_img,1)
+	gray = cv2.cvtColor(new_img,cv2.COLOR_BGR2GRAY) 
+	# Detect Face
+	eyes = eye_cascade.detectMultiScale(gray,1.3,5)
+	# Draw Rectangle
+	for (ex,ey,ew,eh) in eyes:
+		cv2.rectangle(img, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+	return img
+
+# cartoonizes the Image..
+@st.cache
+def cartonize_image(img):
+	new_img = np.array(img.convert('RGB'))
+	img = cv2.cvtColor(new_img,1)
+	gray = cv2.cvtColor(new_img,cv2.COLOR_BGR2GRAY) 
+	# Edges 
+	gray = cv2.medianBlur(gray, 5)
+	edges = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,9,9)
+	# Color
+	color = cv2.bilateralFilter(img , 9 ,300,300)
+	# Cartoon
+	cartoon = cv2.bitwise_and(color,color,mask=edges)
+
+	return cartoon
+
+# changes the orientation of Image..
+@st.cache
+def cannize_image(img):
+	new_img = np.array(img.convert('RGB'))
+	img = cv2.cvtColor(new_img,1)
+	img = cv2.GaussianBlur(img, (11, 11), 0)
+	canny = cv2.Canny(img, 100, 150)
+	return canny
 
 
 def main():
@@ -72,7 +124,9 @@ def main():
 			else:
 				st.image(our_img, width = 800)
 
-		
+
+
+
 
 	elif choice =='About':
 		st.subheader("About Face Detection App")
