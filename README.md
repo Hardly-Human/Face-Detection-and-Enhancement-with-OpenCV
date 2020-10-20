@@ -21,8 +21,8 @@ Face feature detection and Enhancement with OpenCV and Streamlit.
  👻 - Cartoonizing Image
  
 
-### This app has been deployed on heroku.🥳
-🟢 Live at  [face-feature-detection-app](https://face-feature-detection-app.herokuapp.com/)
+### This app has been deployed on Streamlit Sharing.🥳
+🟢 Live at  [face-feature-detection-app](https://share.streamlit.io/hardly-human/face-detection-and-enhancement-with-opencv/streamlit_deployment/app.py)
 
 ### For Local host.💻
 
