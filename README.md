@@ -1,6 +1,9 @@
 # Face-Detection-and-Enhancement-with-OpenCV 
 Face feature detection and Enhancement with OpenCV and Streamlit.
 
+### This app has been deployed on Streamlit Sharing.🥳
+ [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/hardly-human/face-detection-and-enhancement-with-opencv/streamlit_deployment/app.py)
+
 ## Application Implements 2 Image Based Tasks:
 ### Image Enhancement Tasks
   👤  - Gray-scale
@@ -20,9 +23,9 @@ Face feature detection and Enhancement with OpenCV and Streamlit.
  
  👻 - Cartoonizing Image
  
-
-### This app has been deployed on Streamlit Sharing.🥳
-🟢 Live at  [face-feature-detection-app](https://share.streamlit.io/hardly-human/face-detection-and-enhancement-with-opencv/streamlit_deployment/app.py)
+### Demo Images
+![Image1](https://raw.githubusercontent.com/Hardly-Human/Face-Detection-and-Enhancement-with-OpenCV/master/test_images/img1.png)
+![Image2](https://raw.githubusercontent.com/Hardly-Human/Face-Detection-and-Enhancement-with-OpenCV/master/test_images/img2.png)
 
 ### For Local host.💻
 
