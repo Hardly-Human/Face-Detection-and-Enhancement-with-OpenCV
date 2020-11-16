@@ -156,6 +156,8 @@ def main():
 		st.subheader("About Face Detection App")
 		st.markdown("Built with OpenCV and Streamlit by [Rehan uddin](https://hardly-human.github.io/)")
 		st.success("Rehan uddin (Hardly-Human)👋😉")
+		st.markdown("### [Give Feedback](https://www.iamrehan.me/forms/feedback_form/feedback_form.html)\
+	 	`            `[Report an Issue](https://www.iamrehan.me/forms/report_issue/report_issue.html)")
 		
 
 
